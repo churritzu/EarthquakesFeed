@@ -4,9 +4,6 @@ import getopt
 import Globales
 from vistas.Help import HelpView
 from vistas.Earthquakes import EarthquakesView
-# import json
-# import time
-# import datetime
 
 class Main:
 	def __init__(self, argv):
