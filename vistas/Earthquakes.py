@@ -6,11 +6,13 @@ from vistas.datos.RealTimeUSGS import RealTimeUSGS
 
 class EarthquakesView:
 	tiempoDeEspera = 60*5  # Default is 5 min. because the usgs reload the data in that time
+	dateTimeFormat = "%d %B %Y %H:%M:%S"
 
 	def __init__(self):
 		while True:
 			Globales.clean_screen() #Limpia la ventana
-			print(Globales.title() + "\n") #imprime el titulo principal
+			print(Globales.title()) #imprime el titulo principal
+			print("Revision "+ str(datetime.datetime.now().strftime(self.dateTimeFormat)) + "\n")
 
 			data = RealTimeUSGS().filtered_data()
 			if data: self.printData(data)
@@ -30,7 +32,7 @@ class EarthquakesView:
 			print("Magnitude: " + str(temblor["mag"]))
 			print("Type: " + str(temblor["type"]))
 			dt = datetime.datetime.fromtimestamp((temblor["time"] / 1000))
-			print("Daytime: " + str(dt))
+			print("Daytime: " + str(dt.strftime(self.dateTimeFormat)))
 			print("Alert Type: " + str(temblor["alert"]) + "\n")
 			print("-|-|-|-|-|-|-|-|" * 3)
 			print("")
