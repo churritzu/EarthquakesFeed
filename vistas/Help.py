@@ -1,5 +1,5 @@
 import sys
-import Globales
+from misc import Globales
 
 class HelpView:
 	def __init__(self):

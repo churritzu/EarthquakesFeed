@@ -1,7 +1,7 @@
-import sys
-import Globales
 import datetime
+import sys
 import time
+from misc import Globales
 from vistas.datos.RealTimeUSGS import RealTimeUSGS
 
 class EarthquakesView:
@@ -30,7 +30,6 @@ class EarthquakesView:
 			print("Magnitude: " + str(temblor["mag"]))
 			print("Type: " + str(temblor["type"]))
 			dt = datetime.datetime.fromtimestamp((temblor["time"] / 1000))
-			print(type(dt))
 			print("Daytime: " + str(dt))
 			print("Alert Type: " + str(temblor["alert"]) + "\n")
 			print("-|-|-|-|-|-|-|-|" * 3)

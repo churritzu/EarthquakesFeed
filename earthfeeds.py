@@ -1,9 +1,8 @@
-import os
-import sys
 import getopt
-import Globales
-from vistas.Help import HelpView
+import sys
+from misc import Globales
 from vistas.Earthquakes import EarthquakesView
+from vistas.Help import HelpView
 
 class Main:
 	def __init__(self, argv):
