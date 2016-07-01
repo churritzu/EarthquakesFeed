@@ -1,9 +1,9 @@
 import os
 import sys
 import getopt
+import Globales
 from vistas.Help import HelpView
 from vistas.Earthquakes import EarthquakesView
-# import urllib.request
 # import json
 # import time
 # import datetime
@@ -15,12 +15,12 @@ class Main:
 				opts, args = getopt.getopt(argv,"h", ["help"])
 				self.put_view(opts)
 			except getopt.GetoptError: HelpView()
-		else: HelpView()
+		else: EarthquakesView()
 
 	def put_view(self, argv):
 		if HelpView.need_help(argv): HelpView()
 		else: EarthquakesView()
 
 if __name__ == "__main__":
-	os.system('cls' if os.name == 'nt' else 'clear')
+	Globales.clean_screen()
 	Main(sys.argv[1:])
