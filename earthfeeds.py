@@ -1,3 +1,4 @@
+import os
 import sys
 import getopt
 from vistas.Help import HelpView
@@ -21,4 +22,5 @@ class Main:
 		else: EarthquakesView()
 
 if __name__ == "__main__":
+	os.system('cls' if os.name == 'nt' else 'clear')
 	Main(sys.argv[1:])
