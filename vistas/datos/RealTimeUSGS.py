@@ -1,7 +1,6 @@
 import sys
 import urllib.request
 import json
-import datetime
 
 class RealTimeUSGS:
 	'''
@@ -13,8 +12,7 @@ class RealTimeUSGS:
 		http://www.churritzu.com/holaMundo
 	'''
 	url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
-	magnitud = 2.0
-	tiempoDeEspera = 60 * 5; #Default is 5 min. because the usgs reload the data in that time
+	magnitud = 1.5
 	current_latitud = 32.62453889999999
 	current_longitud = -115.45226230000003
 	maxLat = 160000
@@ -43,26 +41,21 @@ class RealTimeUSGS:
 		full_data = self.get_full_data()
 		try:
 			features = full_data["features"]
+			return features
 		except:
 			print("No se encontraron datos disponibles\n")
 			exit()
-		return features
 
 	def filtered_data(self):
 		data = self.get_data()
+		toReturn = list()
+		for temblor in data:
+			longitud = float(temblor["geometry"]["coordinates"][0])
+			latitud = float(temblor["geometry"]["coordinates"][1])
+			if self.inLatitud(latitud) and self.inLongitud(longitud) and temblor["properties"]["mag"] >= self.magnitud:
+				toReturn.append(temblor["properties"])
 
-		for gemeotria in data:
-			longitud = float(gemeotria["geometry"]["coordinates"][0])
-			latitud = float(gemeotria["geometry"]["coordinates"][1])
-			if self.inLatitud(latitud) and self.inLongitud(longitud) and gemeotria["properties"]["mag"] >= self.magnitud:
-				print("Lugar: " + str(gemeotria["properties"]["place"]))
-				print("Magnitud: " + str(gemeotria["properties"]["mag"]))
-				print("Tipo: " + str(gemeotria["properties"]["type"]))
-				dt = datetime.datetime.fromtimestamp((gemeotria["properties"]["time"] / 1000))
-				print("Dia: " + str(dt))
-				print("Alerta: " + str(gemeotria["properties"]["alert"]))
-				print("Url: " + str(gemeotria["properties"]["detail"]))
-				print("")
+		return toReturn
 
 	def inLatitud(self, latitud):
 		if latitud <= self.get_max_latitud() and latitud > self.get_min_latitud():
