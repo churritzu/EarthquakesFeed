@@ -1,11 +1,12 @@
 import os
 
-appName = "Earthquakes Feed"
-url = "http://www.churritzu.com"
-version = "0.0.1"
+__appName__ = "Earthquakes Feed"
+__url__ = "http://www.churritzu.com"
+__version__ = "0.1.0"
+__author__ = "Churritzu <churritzu@yahoo.com>"
 
 def title():
-	return appName+" "+version+" ("+url+")"
+	return __appName__+" "+__version__+" ("+__url__+")"
 
 def clean_screen():
 	os.system('cls' if os.name == 'nt' else 'clear')
