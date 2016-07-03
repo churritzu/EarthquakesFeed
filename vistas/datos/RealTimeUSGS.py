@@ -15,10 +15,10 @@ class RealTimeUSGS:
 	magnitud = 1.5
 	current_latitud = 32.62453889999999
 	current_longitud = -115.45226230000003
-	maxLat = 160000
-	minLat = 85000
-	maxLong = 530000
-	minLong = 280000
+	maxLat = 200
+	minLat = 200
+	maxLong = 200
+	minLong = 200
 
 	def get_json_data(self):
 		#TODO: Revisar que pasa si no hay conexion a la web
@@ -46,7 +46,7 @@ class RealTimeUSGS:
 			print("No se encontraron datos disponibles\n")
 			exit()
 
-	def filtered_data(self):
+	def filtered_data(self, opts):
 		data = self.get_data()
 		toReturn = list()
 		for temblor in data:
@@ -68,13 +68,13 @@ class RealTimeUSGS:
 		return False
 
 	def get_max_latitud(self):
-		return self.current_latitud + (self.maxLat/111319)
+		return self.current_latitud + (self.maxLat/111.12)
 
 	def get_min_latitud(self):
-		return self.current_latitud - (self.minLat / 111319)
+		return self.current_latitud - (self.minLat / 111.12)
 
 	def get_max_longitud(self):
-		return self.current_longitud + (self.maxLong / 111131)
+		return self.current_longitud + (self.maxLong / 111.32)
 
 	def get_min_longitud(self):
-		return self.current_longitud - (self.minLong / 111131)
+		return self.current_longitud - (self.minLong / 111.32)
