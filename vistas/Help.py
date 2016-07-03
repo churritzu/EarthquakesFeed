@@ -10,6 +10,7 @@ class HelpView:
 		print("\t--magnitude=(2.0)\tThe min magnitude of the earthquake (default=2.0)")
 		print("\t--wait=(5)\t\tIs the time it takes to update the data in minutes (default=5)")
 		print("")
+		print("Examples:\nearthfeeds --search=all --magnitude=3.0")
 		sys.exit()
 
 	@staticmethod
