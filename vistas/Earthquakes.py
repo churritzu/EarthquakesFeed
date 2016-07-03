@@ -7,8 +7,8 @@ from vistas.datos.RealTimeUSGS import RealTimeUSGS
 class EarthquakesView:
 	tiempoDeEspera = 300  # Default is 5 min. because the usgs reload the data in that time
 	dateTimeFormat = "%d %B %Y %H:%M:%S"
-	tipo_busqueda = "local"
-	magnitud = 5
+	tipo_busqueda = "all"
+	magnitud = 2
 	current_latitud = 32.62453889999999
 	current_longitud = -115.45226230000003
 	maxLat = 200
@@ -42,6 +42,8 @@ class EarthquakesView:
 					self.tiempoDeEspera=self.minutes_to_seconds(int(val))
 				elif opt == "--magnitude" and float(val) >= 1:
 					self.magnitud = float(val)
+				elif opt == "--search":
+					self.tipo_busqueda = val
 
 	def tomar_opciones(self):
 		opciones = dict()
