@@ -5,16 +5,17 @@ from misc import Globales
 from vistas.datos.RealTimeUSGS import RealTimeUSGS
 
 class EarthquakesView:
-	tiempoDeEspera = 60*5  # Default is 5 min. because the usgs reload the data in that time
+	tiempoDeEspera = 300  # Default is 5 min. because the usgs reload the data in that time
 	dateTimeFormat = "%d %B %Y %H:%M:%S"
 
-	def __init__(self):
+	def __init__(self,opts=None):
+		self.poner_opciones(opts)
 		while True:
 			Globales.clean_screen() #Limpia la ventana
 			print(Globales.title()) #imprime el titulo principal
 			print("Revision "+ str(datetime.datetime.now().strftime(self.dateTimeFormat)) + "\n")
 
-			data = RealTimeUSGS().filtered_data()
+			data = RealTimeUSGS().filtered_data(opts)
 			if data: self.printData(data)
 			else:
 				print("No se encontraron resultados en tu busqueda. para salir presiona ctrl+c\n")
@@ -23,8 +24,16 @@ class EarthquakesView:
 			#Pone el sistema a dormir durante el tiempo de espera
 			try: time.sleep(self.tiempoDeEspera)
 			except:
-				print("Suerte, nos vemos pronto...")
+				print("Suerte, nos vemos pronto...\n")
 				sys.exit()
+
+	def poner_opciones(self, opts):
+		if opts:
+			for opt, val in opts:
+				if opt == "--wait" and int(val) > 0:
+					self.tiempoDeEspera=self.minutes_to_seconds(int(val))
+
+	def minutes_to_seconds(self, min): return 60*min
 
 	def printData(self, data):
 		for temblor in data:
