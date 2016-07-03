@@ -12,13 +12,6 @@ class RealTimeUSGS:
 		http://www.churritzu.com/holaMundo
 	'''
 	url = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
-	magnitud = 1.5
-	current_latitud = 32.62453889999999
-	current_longitud = -115.45226230000003
-	maxLat = 200
-	minLat = 200
-	maxLong = 200
-	minLong = 200
 
 	def get_json_data(self):
 		#TODO: Revisar que pasa si no hay conexion a la web
@@ -46,35 +39,46 @@ class RealTimeUSGS:
 			print("No se encontraron datos disponibles\n")
 			exit()
 
+	def get_raw_data(self):
+		data = self.get_data()
+		toReturn = list()
+		for temblor in data:
+			toReturn.append(temblor["properties"])
+		return toReturn
+
 	def filtered_data(self, opts):
 		data = self.get_data()
 		toReturn = list()
 		for temblor in data:
-			longitud = float(temblor["geometry"]["coordinates"][0])
-			latitud = float(temblor["geometry"]["coordinates"][1])
-			if self.inLatitud(latitud) and self.inLongitud(longitud) and temblor["properties"]["mag"] >= self.magnitud:
+			if(opts["tipo"]=="all" and temblor["properties"]["mag"]>=opts["magnitud"]):
 				toReturn.append(temblor["properties"])
-
+			else:
+				longitud = float(temblor["geometry"]["coordinates"][0])
+				latitud = float(temblor["geometry"]["coordinates"][1])
+				if self.inLatitud(latitud, opts["latitud"], opts["maxLat"], opts["minLat"]) and \
+					 self.inLongitud(longitud, opts["longitud"], opts["maxLong"], opts["minLong"]) and \
+					 temblor["properties"]["mag"] >= opts["magnitud"]:
+					toReturn.append(temblor["properties"])
 		return toReturn
 
-	def inLatitud(self, latitud):
-		if latitud <= self.get_max_latitud() and latitud > self.get_min_latitud():
+	def inLatitud(self, latitud, current, max, min):
+		if latitud <= self.get_max_latitud(current, max) and latitud > self.get_min_latitud(current, min):
 			return True
 		return False
 
-	def inLongitud(self, longitud):
-		if longitud < self.get_max_longitud() and longitud > self.get_min_longitud():
+	def inLongitud(self, longitud, current, max, min):
+		if longitud < self.get_max_longitud(current, max) and longitud > self.get_min_longitud(current, min):
 			return True
 		return False
 
-	def get_max_latitud(self):
-		return self.current_latitud + (self.maxLat/111.12)
+	def get_max_latitud(self, latitud, max):
+		return latitud + (max/111.12)
 
-	def get_min_latitud(self):
-		return self.current_latitud - (self.minLat / 111.12)
+	def get_min_latitud(self, latitud, min):
+		return latitud - (min / 111.12)
 
-	def get_max_longitud(self):
-		return self.current_longitud + (self.maxLong / 111.32)
+	def get_max_longitud(self, longitud, max):
+		return longitud + (max / 111.32)
 
-	def get_min_longitud(self):
-		return self.current_longitud - (self.minLong / 111.32)
+	def get_min_longitud(self, longitud, min):
+		return longitud - (min / 111.32)
