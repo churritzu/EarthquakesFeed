@@ -11,9 +11,8 @@ class HelpView:
 
 	@staticmethod
 	def need_help(opts):
-		for opt, val in opts:
-			if opt == "-h" or opt == "--help":
-				return True
+		if opts:
+			for opt, val in opts:
+				if opt == "-h" or opt == "--help": return True
 
-if __name__ == "__main__":
-	pass
+if __name__ == "__main__": pass
