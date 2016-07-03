@@ -14,7 +14,9 @@ For the moment is only in Command Interface for windows, mac and linux and it is
     
 ##Options
 To get all command's available type:
+
     `python earthfeeds.py --help`
+    
     `python earthfeeds.py -h`
     
 To change a limit of earthquakes magnituded (ej. 3.0)
