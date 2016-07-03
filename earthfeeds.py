@@ -11,8 +11,8 @@ class Main:
 				optsStr = "h"
 				opstList = ["help", "search=", "magnitude=", "wait="]
 				opts, args = getopt.getopt(argv, optsStr, opstList)
-				self.put_view(opts)
-			except getopt.GetoptError: self.put_view()
+				print(opts)
+			except getopt.GetoptError: self.put_view([("--help","")])
 		else: self.put_view()
 
 	def put_view(self, opts=None):
