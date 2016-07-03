@@ -6,16 +6,18 @@ from vistas.Help import HelpView
 
 class Main:
 	def __init__(self, argv):
-		if len(argv):
+		if argv:
 			try:
-				opts, args = getopt.getopt(argv,"h", ["help"])
+				optsStr = "h"
+				opstList = ["help","type=","magnitude=,wait="]
+				opts, args = getopt.getopt(argv, optsStr, opstList)
 				self.put_view(opts)
-			except getopt.GetoptError: HelpView()
-		else: EarthquakesView()
+			except getopt.GetoptError: self.put_view()
+		else: self.put_view()
 
-	def put_view(self, argv):
-		if HelpView.need_help(argv): HelpView()
-		else: EarthquakesView()
+	def put_view(self, opts=None):
+		if HelpView.need_help(opts): HelpView()
+		else: EarthquakesView(opts)
 
 if __name__ == "__main__":
 	Globales.clean_screen()
