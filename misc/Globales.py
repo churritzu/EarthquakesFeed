@@ -1,7 +1,7 @@
 import os
 
 __appName__ = "Earthquakes Feed"
-__url__ = "http://www.churritzu.com"
+__url__ = "https://github.com/churritzu/EarthquakesFeed"
 __version__ = "0.2.0"
 __author__ = "Churritzu <churritzu@yahoo.com>"
 
