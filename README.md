@@ -11,9 +11,9 @@ For the moment is only in Command Interface for windows, mac and linux and it's 
 2.- if you are in the command prompt or in the new power shell only go to the directory containing the downloaded files and type: `C:\yourfiles\EarthquakesFeed\>earthfeeds.py`
     
 ###MacOs/Linux:
-1.- Open a terminal/Bash go to the proyect folder and type:
-2.- `$ chmod +x earthfeeds.py`
-3.- `$ ./earthfeeds.py`
+1. Open a terminal/Bash go to the proyect folder and type:
+2. `$ chmod +x earthfeeds.py`
+3. `$ ./earthfeeds.py`
     
 ##Options
 |     Option    | Default |                                   Description                                  |
