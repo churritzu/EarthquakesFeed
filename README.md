@@ -1,12 +1,13 @@
-###Earthquakes Feed
+#Earthquakes Feed
 
 This is an application to take all global and/or local ground motion with updated "real time data", still in development so feel free to comment or support
 
 ##How to use
-For the moment is only in Command Interface for windows, mac and linux and it is necessary to have installed python (windows)
+For the moment is only in Command Interface for windows, mac and linux and it's necessary to have installed python 3.5 or above.
  
 ###Windows:
-    Doble click on earthfeed.py
+> if you are using the file explorer only doble clicked on the file earthfeed.py. (if a popup appear select the python option)
+> if you are in the command prompt or in the new power shell only go to the directory containing the downloaded files and type: c:\yourfiles\EarthquakesFeed\>earthfeeds.py
     
 ###MacOs/Linux:
     1.-Open a terminal/Bash go to the proyect folder and type:
@@ -20,7 +21,8 @@ To get all command's available type:
     `python earthfeeds.py -h`
     
 To change a limit of earthquakes magnituded (ej. 3.0)
-    `python earthfeeds.py --magnitude=3.0`
+
+    python earthfeeds.py --magnitude=3.0
     
 To change the time of the program refresh the data type (ej. 1 min.):
     `python earthfeeds.py --wait=1`
