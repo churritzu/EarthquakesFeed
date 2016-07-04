@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import getopt
 import sys
 from misc import Globales
