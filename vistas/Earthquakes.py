@@ -19,7 +19,7 @@ class EarthquakesView:
 	def __init__(self,opts=None):
 		self.poner_opciones(opts)
 		while True:
-			Globales.clean_screen() #Limpia la ventana
+			#Globales.clean_screen() #Limpia la ventana
 			print(Globales.title()) #imprime el titulo principal
 			print("Revision "+ str(datetime.datetime.now().strftime(self.dateTimeFormat)) + "\n")
 
@@ -42,6 +42,18 @@ class EarthquakesView:
 					self.tiempoDeEspera=self.minutes_to_seconds(int(val))
 				elif opt == "--magnitude" and float(val) >= 1:
 					self.magnitud = float(val)
+				elif opt == "--latitud":
+					self.current_latitud = float(val)
+				elif opt == "--longitud":
+					self.current_longitud = float(val)
+				elif opt == "--north" and float(val) > 0:
+					self.maxLat = float(val)
+				elif opt == "--south" and float(val) > 0:
+					self.minLat = float(val)
+				elif opt == "--east" and float(val) > 0:
+					self.maxLong = float(val)
+				elif opt == "--west" and float(val) > 0:
+					self.minLong = float(val)
 				elif opt == "--search":
 					self.tipo_busqueda = val
 

@@ -10,7 +10,7 @@ class Main:
 		if argv:
 			try:
 				optsStr = "h"
-				opstList = ["help", "search=", "magnitude=", "wait="]
+				opstList = ["help", "search=", "magnitude=", "wait=", "latitud=", "longitud=", "north=", "south=", "east=", "west="]
 				opts, args = getopt.getopt(argv, optsStr, opstList)
 				self.put_view(opts)
 			except getopt.GetoptError: self.put_view([("--help","")])
