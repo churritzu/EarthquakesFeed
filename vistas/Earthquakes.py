@@ -66,7 +66,6 @@ class EarthquakesView:
 			print("Type: " + str(temblor["type"]))
 			dt = datetime.datetime.fromtimestamp((temblor["time"] / 1000))
 			print("Daytime: " + str(dt.strftime(self.dateTimeFormat)))
-			print("Alert Type: " + str(temblor["alert"]) + "\n")
 			print("-|-|-|-|-|-|-|-|" * 3)
 			print("")
 
