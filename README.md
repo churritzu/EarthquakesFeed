@@ -41,9 +41,8 @@ To get your Coordenates: http://www.coordenadas-gps.com/
 
 
 ##Coming Soon:
-    1.-Update the latitud and longitud of te local position
-    3.-GUI base on Tk for easy configuration
-    4.-And more so stay tuned
+    1.-GUI base on Tk for easy configuration
+    2.-And more so stay tuned
 
     
 
