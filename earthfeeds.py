@@ -4,6 +4,7 @@ import sys
 from misc import Globales
 from vistas.Earthquakes import EarthquakesView
 from vistas.Help import HelpView
+from vistas.MainWindow import MainWindow
 
 class Main:
 	def __init__(self, argv):
@@ -21,5 +22,6 @@ class Main:
 		else: EarthquakesView(opts)
 
 if __name__ == "__main__":
-	Globales.clean_screen()
-	Main(sys.argv[1:])
+	app = MainWindow()
+	#Globales.clean_screen()
+	#Main(sys.argv[1:])
