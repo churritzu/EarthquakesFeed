@@ -1,0 +1,12 @@
+{
+    "longitud": -115.45,
+    "maxLong": 200,
+    "magnitud": 2,
+    "autoRefreshTime": 300,
+    "minLong": 200,
+    "dateTimeFormat": "%d %B %Y %H:%M:%S",
+    "latitud": 32.62,
+    "searchType": 0,
+    "maxLat": 200,
+    "minLat": 200
+}
