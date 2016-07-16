@@ -37,7 +37,4 @@ class MainWindow:
 		main_menu.add_cascade(label="Help", menu=help.get_menu())
 		return main_menu
 
-	def search(self):
-		print("Searching....")
-
 if __name__ == "__main__": pass
